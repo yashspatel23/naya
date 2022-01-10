@@ -2,7 +2,7 @@
 pragma solidity 0.7.5;
 
 import './SafeMath.sol';
-import '../interfaces/IERC20.sol';
+import './IERC20.sol';
 
 
 contract ERC20 is IERC20 {

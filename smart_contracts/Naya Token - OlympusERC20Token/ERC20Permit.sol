@@ -3,8 +3,8 @@ pragma solidity 0.7.5;
 
 import './SafeMath.sol';
 import './Counters.sol';
-import '../interfaces/IERC2612Permit.sol';
-import '../interfaces/IERC20.sol';
+import './IERC2612Permit.sol';
+import './IERC20.sol';
 import './ERC20.sol';
 
 
