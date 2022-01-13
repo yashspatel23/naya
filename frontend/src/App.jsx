@@ -190,7 +190,7 @@ function App() {
   const path = useMemo(() => window.location.pathname, [window.location.pathname]);
   return (
     <Router>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={gTheme}>
         <CssBaseline />
 
         {/* {isAppLoading && <LoadingSplash />} */}
