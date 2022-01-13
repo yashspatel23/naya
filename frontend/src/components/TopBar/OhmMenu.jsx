@@ -9,7 +9,7 @@ import { ReactComponent as sOhmTokenImg } from "../../assets/tokens/token_sOHM.s
 import { ReactComponent as ohmTokenImg } from "../../assets/tokens/token_OHM.svg";
 
 import "./ohmmenu.scss";
-import { dai } from "src/helpers/AllBonds";
+import { dai, frax } from "src/helpers/AllBonds";
 import { useWeb3Context } from "../../hooks/web3Context";
 
 import OhmImg from "src/assets/tokens/1.png";
@@ -61,7 +61,7 @@ function OhmMenu() {
   const open = Boolean(anchorEl);
   const id = "ohm-popper";
   const daiAddress = dai.getAddressForReserve(networkID);
-  // const fraxAddress = frax.getAddressForReserve(networkID);
+  const fraxAddress = frax.getAddressForReserve(networkID);
   return (
     <Box
       component="div"
@@ -69,9 +69,9 @@ function OhmMenu() {
       onMouseLeave={e => handleClick(e)}
       id="ohm-menu-button-hover"
     >
-      <Button id="ohm-menu-button" size="large" variant="contained" color="secondary" title="NAYA" aria-describedby={id}>
+      <Button id="ohm-menu-button" size="large" variant="contained" color="secondary" title="WHISKEY" aria-describedby={id}>
         <SvgIcon component={InfoIcon} color="primary" />
-        <Typography>NAYA</Typography>
+        <Typography>WHISKEY</Typography>
       </Button>
 
       <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom-start" transition>
@@ -99,7 +99,7 @@ function OhmMenu() {
                   >
                     <Button size="large" variant="contained" color="secondary" fullWidth>
                       <Typography align="left">
-                      Get NAYA-BUSD LP <SvgIcon component={ArrowUpIcon} htmlColor="#A3A3A3" />
+                      Get WHISKEY-BUSD LP <SvgIcon component={ArrowUpIcon} htmlColor="#A3A3A3" />
                       </Typography>
                     </Button>
                   </Link>
@@ -120,11 +120,11 @@ function OhmMenu() {
                     <Box display="flex" flexDirection="row" justifyContent="space-between">
                       <Button variant="contained" color="secondary" onClick={addTokenToWallet("WHISKEY", PID_ADDRESS)}>
                         <TokenIcon size={32} symbol="WHISKEY"/>
-                        <Typography variant="body1">NAYA</Typography>
+                        <Typography variant="body1">WHISKEY</Typography>
                       </Button>
                       <Button variant="contained" color="secondary" onClick={addTokenToWallet("SCREWBALL", SPID_ADDRESS)}>
                         <TokenIcon size={32} symbol="SCREWBALL"/> 
-                        <Typography variant="body1">sNAYA</Typography>
+                        <Typography variant="body1">SCREWBALL</Typography>
                       </Button>
                       {/* <Button variant="contained" color="secondary" onClick={addTokenToWallet("33T", PT_TOKEN_ADDRESS)}>
                         <Typography variant="body1">33T</Typography>

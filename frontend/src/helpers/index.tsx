@@ -9,27 +9,27 @@ import { ReactComponent as OhmImg } from "../assets/tokens/token_OHM.svg";
 import { ReactComponent as SOhmImg } from "../assets/tokens/token_sOHM.svg";
 import LogoImg from '../assets/ohm/logo.png'
 
-// import { ohm_dai } from "./AllBonds";
+import { ohm_dai } from "./AllBonds";
 import { JsonRpcSigner, StaticJsonRpcProvider } from "@ethersproject/providers";
 import { IBaseAsyncThunk } from "src/slices/interfaces";
 
 // NOTE (appleseed): this looks like an outdated method... we now have this data in the graph (used elsewhere in the app)
 export async function getMarketPrice({ networkID, provider }: IBaseAsyncThunk) {
-  // const ohm_dai_address = ohm_dai.getAddressForReserve(networkID);
-  // const pairContract = new ethers.Contract(ohm_dai_address, PairContract, provider);
-  // const reserves = await pairContract.getReserves();
+  const ohm_dai_address = ohm_dai.getAddressForReserve(networkID);
+  const pairContract = new ethers.Contract(ohm_dai_address, PairContract, provider);
+  const reserves = await pairContract.getReserves();
 
   
-  // console.error(reserves[0].toString())
-  // const reserves0 = getDisplayBalance(reserves[1],18)
-  // const reserves1 = getDisplayBalance(reserves[0],9,2)
+  console.error(reserves[0].toString())
+  const reserves0 = getDisplayBalance(reserves[1],18)
+  const reserves1 = getDisplayBalance(reserves[0],9,2)
 
-  // const marketPrice = (Number(reserves0))/Number(reserves1);
+  const marketPrice = (Number(reserves0))/Number(reserves1);
 
   // console.error('测试参数')
   // console.error(marketPrice)
   // commit('set', { marketPrice: marketPrice / Math.pow(10, 9) });
-  return 0;
+  return marketPrice;
 }
 
 export async function getTokenPrice(tokenId = "olympus") {

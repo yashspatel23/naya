@@ -193,13 +193,13 @@ function Home() {
 
     </div>
     <div className="boodyBox fxColumn">
-      {/* <img src={Bg} alt="" className="bg" /> */}
+      <img src={Bg} alt="" className="bg" />
       <div className="titleColor">
-        DAO Hedge Fund
+        Decentralized Bourbon
       </div>
-      {/* <div className="titleColor">
+      <div className="titleColor">
         Reserve Currency
-      </div> */}
+      </div>
       <div style={{ height: 30 }}></div>
       {/* <div className="DaoJishi">
         {isOpen ? <>
@@ -218,7 +218,7 @@ function Home() {
       
       </div> */}
       <div className="contentStyle">
-        NAYA HEDGE FUND. WRITE SOME INTRO BLURB HERE BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH.
+        Bourbon DAO is a decentralized reserve currency protocol based on the WHISKEY token and aims at building a community-owned decentralized financial infrastructure for the crypto world.
       </div>
       <div className="fxBetween">
         <a href="/stake" className="btnBox_1">Enter App</a>

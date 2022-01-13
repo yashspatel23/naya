@@ -37,96 +37,96 @@ export const dai = new StableBond({
       reserveAddress: addresses[NetworkID.Mainnet].DAI_ADDRESS,
     },
     [NetworkID.Testnet]: {
-      bondAddress: "0x7a49B52645D3B79B47cFEC14976916d51643CC63",
-      reserveAddress: "0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee",
+      bondAddress: "0xDea5668E815dAF058e3ecB30F645b04ad26374Cf",
+      reserveAddress: "0xB2180448f8945C8Cc8AE9809E67D6bd27d8B2f2C",
     },
   },
 });
 
-// export const eth = new CustomBond({
-//   name: "bnb",
-//   displayName: "WBNB",
-//   bondToken: "WBNB",
-//   bondIconSvg: wETHImg,
-//   bondContractABI: EthBondContract,
-//   networkAddrs: {
-//     [NetworkID.Mainnet]: {
-//       bondAddress: "0x9A2E559bBe717497dD2cE9d83A463dcF7ea11790",
-//       reserveAddress: addresses[NetworkID.Mainnet].BNB_ADDRESS,
-//     },
-//     [NetworkID.Testnet]: {
-//       bondAddress: "0xca7b90f8158A4FAA606952c023596EE6d322bcf0",
-//       reserveAddress: "0xc778417e063141139fce010982780140aa0cd5ab",
-//     },
-//   },
-//   customTreasuryBalanceFunc: async function (this: CustomBond, networkID, provider) {
-//     const ethBondContract = this.getContractForBond(networkID, provider);
-//     let ethPrice = await ethBondContract.assetPrice();
-//     ethPrice = ethPrice / Math.pow(10, 8);
-//     const token = this.getContractForReserve(networkID, provider);
-//     let ethAmount = await token.balanceOf(addresses[networkID].TREASURY_ADDRESS);
-//     ethAmount = ethAmount / Math.pow(10, 18);
-//     return ethAmount * ethPrice;
-//   },
-// });
+export const eth = new CustomBond({
+  name: "bnb",
+  displayName: "WBNB",
+  bondToken: "WBNB",
+  bondIconSvg: wETHImg,
+  bondContractABI: EthBondContract,
+  networkAddrs: {
+    [NetworkID.Mainnet]: {
+      bondAddress: "0x9A2E559bBe717497dD2cE9d83A463dcF7ea11790",
+      reserveAddress: addresses[NetworkID.Mainnet].BNB_ADDRESS,
+    },
+    [NetworkID.Testnet]: {
+      bondAddress: "0xca7b90f8158A4FAA606952c023596EE6d322bcf0",
+      reserveAddress: "0xc778417e063141139fce010982780140aa0cd5ab",
+    },
+  },
+  customTreasuryBalanceFunc: async function (this: CustomBond, networkID, provider) {
+    const ethBondContract = this.getContractForBond(networkID, provider);
+    let ethPrice = await ethBondContract.assetPrice();
+    ethPrice = ethPrice / Math.pow(10, 8);
+    const token = this.getContractForReserve(networkID, provider);
+    let ethAmount = await token.balanceOf(addresses[networkID].TREASURY_ADDRESS);
+    ethAmount = ethAmount / Math.pow(10, 18);
+    return ethAmount * ethPrice;
+  },
+});
 
-// export const ohm_dai = new LPBond({
-//   name: "WHISKEY-BUSD",
-//   displayName: "WHISKEY-BUSD LP",
-//   bondToken: "WHISKEY-BUSD",
-//   bondIconSvg: OhmDaiImg,
-//   bondContractABI: BondOhmDaiContract,
-//   reserveContract: ReserveOhmDaiContract,
-//   networkAddrs: {
-//     [NetworkID.Mainnet]: {
-//       bondAddress: "0x7F1b0Dab5C7c8d7a63758946f853049bC53f4306",
-//       reserveAddress: "0x96b6d5482313eECC031aFEb2Fb32da2BA7439BA2",
-//     },
-//     [NetworkID.Testnet]: {
-//       bondAddress: "0xcF449dA417cC36009a1C6FbA78918c31594B9377",
-//       reserveAddress: "0x8D5a22Fb6A1840da602E56D1a260E56770e0bCE2",
-//     },
-//   },
-//   lpUrl:
-//    `https://pancakeswap.finance/add/${addresses[NetworkID.Mainnet].DAI_ADDRESS}/${addresses[NetworkID.Mainnet].PID_ADDRESS}`,
-// });
-// export const ohm_eth = new LPBond({
-//   name: "WHISKEY-BNB",
-//   displayName: "WHISKEY-BNB LP",
-//   bondToken: "WHISKEY-BNB",
-//   bondIconSvg: OhmDaiImg,
-//   bondContractABI: BondOhmDaiContract,
-//   reserveContract: ReserveOhmDaiContract,
-//   networkAddrs: {
-//     [NetworkID.Mainnet]: {
-//       bondAddress: "0x7F1b0Dab5C7c8d7a63758946f853049bC53f4306",
-//       reserveAddress: "0x96b6d5482313eECC031aFEb2Fb32da2BA7439BA2",
-//     },
-//     [NetworkID.Testnet]: {
-//       bondAddress: "0xcF449dA417cC36009a1C6FbA78918c31594B9377",
-//       reserveAddress: "0x8D5a22Fb6A1840da602E56D1a260E56770e0bCE2",
-//     },
-//   },
-//   lpUrl:
-//    `https://pancakeswap.finance/add/${addresses[NetworkID.Mainnet].BNB_ADDRESS}/${addresses[NetworkID.Mainnet].PID_ADDRESS}`,
-// });
-// export const frax = new StableBond({
-//   name: "frax",
-//   displayName: "FRAX",
-//   bondToken: "FRAX",
-//   bondIconSvg: FraxImg,
-//   bondContractABI: FraxBondContract,
-//   networkAddrs: {
-//     [NetworkID.Mainnet]: {
-//       bondAddress: "0x8510c8c2B6891E04864fa196693D44E6B6ec2514",
-//       reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e",
-//     },
-//     [NetworkID.Testnet]: {
-//       bondAddress: "0xF651283543fB9D61A91f318b78385d187D300738",
-//       reserveAddress: "0x2F7249cb599139e560f0c81c269Ab9b04799E453",
-//     },
-//   },
-// });
+export const ohm_dai = new LPBond({
+  name: "WHISKEY-BUSD",
+  displayName: "WHISKEY-BUSD LP",
+  bondToken: "WHISKEY-BUSD",
+  bondIconSvg: OhmDaiImg,
+  bondContractABI: BondOhmDaiContract,
+  reserveContract: ReserveOhmDaiContract,
+  networkAddrs: {
+    [NetworkID.Mainnet]: {
+      bondAddress: "0x7F1b0Dab5C7c8d7a63758946f853049bC53f4306",
+      reserveAddress: "0x96b6d5482313eECC031aFEb2Fb32da2BA7439BA2",
+    },
+    [NetworkID.Testnet]: {
+      bondAddress: "0xcF449dA417cC36009a1C6FbA78918c31594B9377",
+      reserveAddress: "0x8D5a22Fb6A1840da602E56D1a260E56770e0bCE2",
+    },
+  },
+  lpUrl:
+   `https://pancakeswap.finance/add/${addresses[NetworkID.Mainnet].DAI_ADDRESS}/${addresses[NetworkID.Mainnet].PID_ADDRESS}`,
+});
+export const ohm_eth = new LPBond({
+  name: "WHISKEY-BNB",
+  displayName: "WHISKEY-BNB LP",
+  bondToken: "WHISKEY-BNB",
+  bondIconSvg: OhmDaiImg,
+  bondContractABI: BondOhmDaiContract,
+  reserveContract: ReserveOhmDaiContract,
+  networkAddrs: {
+    [NetworkID.Mainnet]: {
+      bondAddress: "0x7F1b0Dab5C7c8d7a63758946f853049bC53f4306",
+      reserveAddress: "0x96b6d5482313eECC031aFEb2Fb32da2BA7439BA2",
+    },
+    [NetworkID.Testnet]: {
+      bondAddress: "0xcF449dA417cC36009a1C6FbA78918c31594B9377",
+      reserveAddress: "0x8D5a22Fb6A1840da602E56D1a260E56770e0bCE2",
+    },
+  },
+  lpUrl:
+   `https://pancakeswap.finance/add/${addresses[NetworkID.Mainnet].BNB_ADDRESS}/${addresses[NetworkID.Mainnet].PID_ADDRESS}`,
+});
+export const frax = new StableBond({
+  name: "frax",
+  displayName: "FRAX",
+  bondToken: "FRAX",
+  bondIconSvg: FraxImg,
+  bondContractABI: FraxBondContract,
+  networkAddrs: {
+    [NetworkID.Mainnet]: {
+      bondAddress: "0x8510c8c2B6891E04864fa196693D44E6B6ec2514",
+      reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e",
+    },
+    [NetworkID.Testnet]: {
+      bondAddress: "0xF651283543fB9D61A91f318b78385d187D300738",
+      reserveAddress: "0x2F7249cb599139e560f0c81c269Ab9b04799E453",
+    },
+  },
+});
 
 export const lusd = new StableBond({
   name: "USDT",
@@ -148,26 +148,26 @@ export const lusd = new StableBond({
 
 
 
-// export const ohm_frax = new LPBond({
-//   name: "ohm_frax_lp",
-//   displayName: "OHM-FRAX LP",
-//   bondToken: "FRAX",
-//   bondIconSvg: OhmFraxImg,
-//   bondContractABI: FraxOhmBondContract,
-//   reserveContract: ReserveOhmFraxContract,
-//   networkAddrs: {
-//     [NetworkID.Mainnet]: {
-//       bondAddress: "0xc20CffF07076858a7e642E396180EC390E5A02f7",
-//       reserveAddress: "0x2dce0dda1c2f98e0f171de8333c3c6fe1bbf4877",
-//     },
-//     [NetworkID.Testnet]: {
-//       bondAddress: "0x7BB53Ef5088AEF2Bb073D9C01DCa3a1D484FD1d2",
-//       reserveAddress: "0x11BE404d7853BDE29A3e73237c952EcDCbBA031E",
-//     },
-//   },
-//   lpUrl:
-//     "https://app.uniswap.org/#/add/v2/0x853d955acef822db058eb8505911ed77f175b99e/0x383518188c0c6d7730d91b2c03a03c837814a899",
-// });
+export const ohm_frax = new LPBond({
+  name: "ohm_frax_lp",
+  displayName: "OHM-FRAX LP",
+  bondToken: "FRAX",
+  bondIconSvg: OhmFraxImg,
+  bondContractABI: FraxOhmBondContract,
+  reserveContract: ReserveOhmFraxContract,
+  networkAddrs: {
+    [NetworkID.Mainnet]: {
+      bondAddress: "0xc20CffF07076858a7e642E396180EC390E5A02f7",
+      reserveAddress: "0x2dce0dda1c2f98e0f171de8333c3c6fe1bbf4877",
+    },
+    [NetworkID.Testnet]: {
+      bondAddress: "0x7BB53Ef5088AEF2Bb073D9C01DCa3a1D484FD1d2",
+      reserveAddress: "0x11BE404d7853BDE29A3e73237c952EcDCbBA031E",
+    },
+  },
+  lpUrl:
+    "https://app.uniswap.org/#/add/v2/0x853d955acef822db058eb8505911ed77f175b99e/0x383518188c0c6d7730d91b2c03a03c837814a899",
+});
 
 export const pid_lusd = new LPBond({
   name: "pid_lusd_lp",
@@ -197,8 +197,7 @@ export const pid_lusd = new LPBond({
 // Add new bonds to this array!!
 // export const allBonds = [dai, frax, eth, ohm_dai, ohm_frax, lusd, pid_lusd];
 
-// export const allBonds = [dai,ohm_dai,lusd,eth]
-export const allBonds = [dai]
+export const allBonds = [dai,ohm_dai,lusd,eth]
 // export const allBonds:LPBond[]=[]
 export const treasuryBalanceAll = async ( networkID: NetworkID, provider: StaticJsonRpcProvider) => {
   return (await Promise.all(allBonds.map(async (item) => {

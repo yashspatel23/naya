@@ -159,8 +159,6 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     const chainId = await connectedProvider.getNetwork().then(network => network.chainId);
     const connectedAddress = await connectedProvider.getSigner().getAddress();
     const validNetwork = _checkNetwork(chainId);
-
-    console.log(chainId, connectedAddress)
     if (!validNetwork) {
       console.error("Wrong network, please switch to mainnet");
       return;

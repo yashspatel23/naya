@@ -145,14 +145,14 @@ export const tooltipItems = {
 };
 
 export const tooltipInfoMessages = {
-  tvl: "Total Value Deposited, is the dollar amount of all NAYA staked in the protocol. This metric is often used as growth or health indicator in DeFi projects.",
+  tvl: "Total Value Deposited, is the dollar amount of all WHISKEY staked in the protocol. This metric is often used as growth or health indicator in DeFi projects.",
   mvt: "Market Value of Treasury Assets, is the sum of the value (in dollars) of all assets held by the treasury.",
-  rfv: "Risk Free Value, is the amount of funds the treasury guarantees to use for backing NAYA.",
+  rfv: "Risk Free Value, is the amount of funds the treasury guarantees to use for backing WHISKEY.",
   pol: "Protocol Owned Liquidity, is the amount of LP the treasury owns and controls. The more POL the better for the protocol and its users.",
-  holder: "Holders, represents the total number of Ohmies (sNAYA holders)",
-  staked: "NAYA Staked, is the ratio of sNAYA to NAYA (staked vs unstaked)",
+  holder: "Holders, represents the total number of Ohmies (SCREWBALL holders)",
+  staked: "WHISKEY Staked, is the ratio of SCREWBALL to WHISKEY (staked vs unstaked)",
   apy: "Annual Percentage Yield, is the normalized representation of an interest rate, based on a compounding period over one year. Note that APYs provided are rather ballpark level indicators and not so much precise future results.",
-  runway: "Runway, is the number of days sNAYA emissions can be sustained at a given rate. Lower APY = longer runway",
+  runway: "Runway, is the number of days SCREWBALL emissions can be sustained at a given rate. Lower APY = longer runway",
 };
 
 export const itemType = {

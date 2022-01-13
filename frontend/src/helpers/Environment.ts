@@ -13,7 +13,7 @@ export class EnvHelper {
   static whitespaceRegex = /\s+/;
 
   static getOtherChainID() {
-    return Number(EnvHelper.env.REACT_APP_CHAIN_ID || 0);
+    return Number(EnvHelper.env.REACT_APP_CHAINID || 0);
   }
   /**
    * Returns env contingent segment api key
