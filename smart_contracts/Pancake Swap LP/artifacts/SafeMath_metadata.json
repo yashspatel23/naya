@@ -1,0 +1,37 @@
+{
+	"compiler": {
+		"version": "0.5.16+commit.9c3226ce"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"smart_contracts/Pancake Swap LP/PancakePair.sol": "SafeMath"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"smart_contracts/Pancake Swap LP/PancakePair.sol": {
+			"keccak256": "0xdf0b5e1b63f8d922e55bf7687288975f4203a0b7a0ae5ca2c1e1cd62f297eba1",
+			"urls": [
+				"bzz-raw://ed50f24da5be3f5ccba25eede5d01797208d605517eccadd4964915a8950cd73",
+				"dweb:/ipfs/QmZS9FbFiNMoK6EKiCyKyXiNJ9PjRWCcdFFsiLia8FLv2K"
+			]
+		}
+	},
+	"version": 1
+}
