@@ -1,0 +1,852 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_symbol",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Approval",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "epoch",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "rebase",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "LogRebase",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "stakingContract",
+						"type": "address"
+					}
+				],
+				"name": "LogStakingContractUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "epoch",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "totalSupply",
+						"type": "uint256"
+					}
+				],
+				"name": "LogSupply",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipPulled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipPushed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "DOMAIN_SEPARATOR",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "INDEX",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "PERMIT_TYPEHASH",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner_",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					}
+				],
+				"name": "allowance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "gons",
+						"type": "uint256"
+					}
+				],
+				"name": "balanceForGons",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "who",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "circulatingSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "decimals",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "subtractedValue",
+						"type": "uint256"
+					}
+				],
+				"name": "decreaseAllowance",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "gonsForBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "addedValue",
+						"type": "uint256"
+					}
+				],
+				"name": "increaseAllowance",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "index",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "stakingContract_",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "initializer",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "nonces",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "deadline",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "v",
+						"type": "uint8"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "r",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "s",
+						"type": "bytes32"
+					}
+				],
+				"name": "permit",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "policy",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pullManagement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner_",
+						"type": "address"
+					}
+				],
+				"name": "pushManagement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "profit_",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "epoch_",
+						"type": "uint256"
+					}
+				],
+				"name": "rebase",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "rebases",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "epoch",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rebase",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalStakedBefore",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalStakedAfter",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountRebased",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "blockNumberOccured",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceManagement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_INDEX",
+						"type": "uint256"
+					}
+				],
+				"name": "setIndex",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "stakingContract",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "transfer",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"rebase(uint256,uint256)": {
+					"params": {
+						"profit_": "uint256"
+					},
+					"returns": {
+						"_0": "uint256"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"rebase(uint256,uint256)": {
+					"notice": "increases sOHM supply to increase staking balances relative to profit_"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"smart_contracts/sNaya Token - sOlympus/sNayaERC20.sol": "sOlympus"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"smart_contracts/sNaya Token - sOlympus/Counters.sol": {
+			"keccak256": "0xac1ea562b0d5bae03a67217857f0277cd08669b02d0c454df9b53def40e00b9c",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://7901f74f1f2d67f6add75dbd3d01cfb4626419708279781e19496a8593019028",
+				"dweb:/ipfs/QmNamyEee9Ve2YiSJ5s8jZGn4RLWAHKKuTwPPBCGsbDZFN"
+			]
+		},
+		"smart_contracts/sNaya Token - sOlympus/ERC20.sol": {
+			"keccak256": "0x54e356de78833fcbd9d9b29b06f0028ec42291663e16407c263e50614ae63561",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://84f5f78eca7e1893ec2b77a0ee04d4c5e412ced1ab3828673a6c77699c740859",
+				"dweb:/ipfs/QmZbXezv3GhGnq8SkMTcySBviTtxKHtCQpz4S3rXqgdRfK"
+			]
+		},
+		"smart_contracts/sNaya Token - sOlympus/ERC20Permit.sol": {
+			"keccak256": "0x0732da9642ad47cc5ad9bddef88f000cc7ca20d70dcf057ffd30dda9de41387a",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://a1c3a37c7d044f6ab8d2c6273a7de76f4877bc83241386b3f2b9693092f61e3d",
+				"dweb:/ipfs/QmSakcPbNbNgfspY9JdRB2doqSk78jpZ1CZFDeFg7Dzp3a"
+			]
+		},
+		"smart_contracts/sNaya Token - sOlympus/IERC20.sol": {
+			"keccak256": "0xadd81a449948f7b07ee3d96471d11f545a753380fad6625a9486f9f2c7328860",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://66a8b09ab70ce44028f98e84da7a360d0854b976211ad1818589b3ebcf42bb5b",
+				"dweb:/ipfs/QmNM4HxEvvqocVcRb537ojg2iXFmEgrFVcg6XFJZiw9sCZ"
+			]
+		},
+		"smart_contracts/sNaya Token - sOlympus/IERC2612Permit.sol": {
+			"keccak256": "0xf30d6bf05718d87a5438070329c6f636246ad0fa6db37a38291251786a940a42",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://182813fd3017f36f9218c6f8ab04a73a320c7ebec81deefffacca40be9e08883",
+				"dweb:/ipfs/QmdsUiTCbQmA3auruBLyEHdMqNq4TdAsP563uBqR5R8kh4"
+			]
+		},
+		"smart_contracts/sNaya Token - sOlympus/IOwnable.sol": {
+			"keccak256": "0x40951fa30cc49c05c5548753fd97a0c884145a815e8ee7775c2882d2a54c6627",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://c86fd97c4dff04187731060fda806d0b54c7d414f6905080944bf41d852b98e6",
+				"dweb:/ipfs/QmdWNX23iXSTrezhHfNefLSNWQz1mfbLFqvKNNJ3PMNE5q"
+			]
+		},
+		"smart_contracts/sNaya Token - sOlympus/Ownable.sol": {
+			"keccak256": "0x9e8c84b43d64b9bf495ff24b47535bf922589f6ae6ddcab9d7006bb7b05a8a81",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://001772317739daa5015496a8a01eba5ce6f9429cca9be65f1c585d3ac5852482",
+				"dweb:/ipfs/QmSV15r34DxXvwvmH1tr6VaZev1UsiPrVYvsdN1wwTXYM3"
+			]
+		},
+		"smart_contracts/sNaya Token - sOlympus/SafeMath.sol": {
+			"keccak256": "0x59defb86e464ab485477bdac212ce08c5142f7d4643d7f7fce9d0b674f1dec6c",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://0ef51edfff3d7db2373d11d6310be833aed382052a7972e859434e5dd449a5c2",
+				"dweb:/ipfs/QmPxC2Ud688GZTbMf5S1JWqnSaEzjH9Q2gU8WqViUFZYt4"
+			]
+		},
+		"smart_contracts/sNaya Token - sOlympus/sNayaERC20.sol": {
+			"keccak256": "0x34b16e2743ad0c643af69ada31d7084285e1b66285fd4548e08137a8166bdb0f",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://7ddc7dde38e85c61ebd7c876401d8cacb108fe6f57b78600510c67dce78ffe22",
+				"dweb:/ipfs/QmUfD1A7tiJLCRDFgtbC1jFwgWtSwEx945aqo7CPo1PWgM"
+			]
+		}
+	},
+	"version": 1
+}

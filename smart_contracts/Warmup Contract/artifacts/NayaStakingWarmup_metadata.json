@@ -1,0 +1,114 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_staking",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_sNAYA",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_staker",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "retrieve",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "sNAYA",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "staking",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"smart_contracts/Warmup Contract/NayaStakingWarmup.sol": "NayaStakingWarmup"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"smart_contracts/Warmup Contract/IERC20.sol": {
+			"keccak256": "0xadd81a449948f7b07ee3d96471d11f545a753380fad6625a9486f9f2c7328860",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://66a8b09ab70ce44028f98e84da7a360d0854b976211ad1818589b3ebcf42bb5b",
+				"dweb:/ipfs/QmNM4HxEvvqocVcRb537ojg2iXFmEgrFVcg6XFJZiw9sCZ"
+			]
+		},
+		"smart_contracts/Warmup Contract/NayaStakingWarmup.sol": {
+			"keccak256": "0xc8378462fed7fef52f1693b3efda54ce637955db67ded864c50099a71d02db64",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://8adedb7898b2d08bda76411e8846bd23ef0060fed0f62957d0f837ba434f48f7",
+				"dweb:/ipfs/QmeyTsf4mimjSJpx8nkaoHZqJyBEiJqybMX3B3mt2obRGo"
+			]
+		}
+	},
+	"version": 1
+}

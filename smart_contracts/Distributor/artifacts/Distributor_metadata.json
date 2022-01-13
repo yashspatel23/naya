@@ -1,0 +1,463 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_treasury",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_ohm",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_epochLength",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_nextEpochBlock",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "OHM",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_rewardRate",
+						"type": "uint256"
+					}
+				],
+				"name": "addRecipient",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "adjustments",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "add",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "target",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "distribute",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "epochLength",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "info",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "rate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nextEpochBlock",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_rate",
+						"type": "uint256"
+					}
+				],
+				"name": "nextRewardAt",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_recipient",
+						"type": "address"
+					}
+				],
+				"name": "nextRewardFor",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "policy",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pullPolicy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newPolicy_",
+						"type": "address"
+					}
+				],
+				"name": "pushPolicy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_recipient",
+						"type": "address"
+					}
+				],
+				"name": "removeRecipient",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renouncePolicy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_add",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_rate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_target",
+						"type": "uint256"
+					}
+				],
+				"name": "setAdjustment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "treasury",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"addRecipient(address,uint256)": {
+					"params": {
+						"_recipient": "address",
+						"_rewardRate": "uint"
+					}
+				},
+				"nextRewardAt(uint256)": {
+					"params": {
+						"_rate": "uint"
+					},
+					"returns": {
+						"_0": "uint"
+					}
+				},
+				"nextRewardFor(address)": {
+					"params": {
+						"_recipient": "address"
+					},
+					"returns": {
+						"_0": "uint"
+					}
+				},
+				"removeRecipient(uint256,address)": {
+					"params": {
+						"_index": "uint",
+						"_recipient": "address"
+					}
+				},
+				"setAdjustment(uint256,bool,uint256,uint256)": {
+					"params": {
+						"_add": "bool",
+						"_index": "uint",
+						"_rate": "uint",
+						"_target": "uint"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"addRecipient(address,uint256)": {
+					"notice": "adds recipient for distributions"
+				},
+				"distribute()": {
+					"notice": "send epoch reward to staking contract"
+				},
+				"nextRewardAt(uint256)": {
+					"notice": "view function for next reward at given rate"
+				},
+				"nextRewardFor(address)": {
+					"notice": "view function for next reward for specified address"
+				},
+				"removeRecipient(uint256,address)": {
+					"notice": "removes recipient for distributions"
+				},
+				"setAdjustment(uint256,bool,uint256,uint256)": {
+					"notice": "set adjustment info for a collector's reward rate"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"smart_contracts/Distributor/StakingDistributor.sol": "Distributor"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"smart_contracts/Distributor/Address.sol": {
+			"keccak256": "0x6d6fa4aa1f02e16366ada8dec2b5f0fd16be321b642d81963d44cc17043bea48",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://159f3648f5e5b8940ccc9e69dd32d0f491faa399d71da02f5750979a5777ec04",
+				"dweb:/ipfs/QmUz4B7Veu4mAHcpWkHARJVCxS6Xp5SBairJA284u2kNZu"
+			]
+		},
+		"smart_contracts/Distributor/IERC20.sol": {
+			"keccak256": "0xadd81a449948f7b07ee3d96471d11f545a753380fad6625a9486f9f2c7328860",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://66a8b09ab70ce44028f98e84da7a360d0854b976211ad1818589b3ebcf42bb5b",
+				"dweb:/ipfs/QmNM4HxEvvqocVcRb537ojg2iXFmEgrFVcg6XFJZiw9sCZ"
+			]
+		},
+		"smart_contracts/Distributor/IPolicy.sol": {
+			"keccak256": "0x122bfcccce1e24b26abfd1a4fc2fdf302a30f51973be2879d4e8563f69a80759",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://c07597d9fc31928f481493870a943434a928fc644948a69dced9d23254e4874e",
+				"dweb:/ipfs/Qmdzti92W46wRZxMHFDY42Tu7QNZmfrjjmh4ota79troBt"
+			]
+		},
+		"smart_contracts/Distributor/ITreasury.sol": {
+			"keccak256": "0xdb9e01400915ab1245045b12544e6cc0370baa285ab083caf9efd89e40a07d2e",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://6a21841812c6e70e8fc524e34339e68d4a5c6306616609c1fa5e91d5e4b259a6",
+				"dweb:/ipfs/QmWVPT59e8dTtmLiGwMLGWfyEAAzHePyHw1CCj7se6oKL1"
+			]
+		},
+		"smart_contracts/Distributor/Policy.sol": {
+			"keccak256": "0x295b25954eecbfea3dbcf59c5c0920c8d1c230fac56c78440e8b14c1adb3871d",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://5bfae7974e731c933ff2a3069fcd3642d8d5c13b15b179ca9dafa11382e0588f",
+				"dweb:/ipfs/QmfQvZfTR94hvoETcgPfga7BZjicyDNZ5ePKnLQHGaxPtq"
+			]
+		},
+		"smart_contracts/Distributor/SafeERC20.sol": {
+			"keccak256": "0x026b30810325ff1d06ddd71fb097a9f4633a6ab1bb491662e6f70bad0efaff19",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://8d3942e4f90dce881e555ba9d1b8f96c8b2b2cf783d87ba257a6dee7c1bc3915",
+				"dweb:/ipfs/QmUK2zSbXozMLPr6VpARfeSfRu16RPzFHiPmkSN1x3dfB2"
+			]
+		},
+		"smart_contracts/Distributor/SafeMath.sol": {
+			"keccak256": "0x59defb86e464ab485477bdac212ce08c5142f7d4643d7f7fce9d0b674f1dec6c",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://0ef51edfff3d7db2373d11d6310be833aed382052a7972e859434e5dd449a5c2",
+				"dweb:/ipfs/QmPxC2Ud688GZTbMf5S1JWqnSaEzjH9Q2gU8WqViUFZYt4"
+			]
+		},
+		"smart_contracts/Distributor/StakingDistributor.sol": {
+			"keccak256": "0xd5ccc7d313c0f132697542e4eeb4aabd7f9b14bed2ee489fc2c09484ea44e683",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://186107eecf5a55d5d30e37fb40253886acfd83d9bc00c7717bb882f917cebbc3",
+				"dweb:/ipfs/QmREURWSvvQ3HQqEPreoydmPp7ymCtHxExhCxHXL2Jtcbu"
+			]
+		}
+	},
+	"version": 1
+}
