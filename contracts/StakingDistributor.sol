@@ -292,7 +292,7 @@ contract Distributor is Ownable {
     
     /* ====== VARIABLES ====== */
 
-    IERC20 public immutable TIME;
+    IERC20 public immutable NAYA;
     ITreasury public immutable treasury;
     
     uint32 public immutable epochLength;
@@ -323,11 +323,11 @@ contract Distributor is Ownable {
     
     /* ====== CONSTRUCTOR ====== */
 
-    constructor( address _treasury, address _time, uint32 _epochLength, uint32 _nextEpochTime ) {        
+    constructor( address _treasury, address _naya, uint32 _epochLength, uint32 _nextEpochTime ) {        
         require( _treasury != address(0) );
         treasury = ITreasury(_treasury);
-        require( _time != address(0) );
-        TIME = IERC20(_time);
+        require( _naya != address(0) );
+        NAYA = IERC20(_naya);
         epochLength = _epochLength;
         nextEpochTime = _nextEpochTime;
     }
@@ -400,7 +400,7 @@ contract Distributor is Ownable {
         @return uint
      */
     function nextRewardAt( uint _rate ) public view returns ( uint ) {
-        return TIME.totalSupply().mul( _rate ).div( 1000000 );
+        return NAYA.totalSupply().mul( _rate ).div( 1000000 );
     }
 
     /**
