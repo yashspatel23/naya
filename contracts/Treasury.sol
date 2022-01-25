@@ -230,7 +230,7 @@ interface IERC20Mintable {
   function mint( address account_, uint256 ammount_ ) external;
 }
 
-interface ITIMEERC20 is IERC20Mintable, IERC20 {
+interface INAYAERC20 is IERC20Mintable, IERC20 {
     function burnFrom(address account_, uint256 amount_) external;
 }
 
@@ -238,7 +238,7 @@ interface IBondCalculator {
   function valuation( address pair_, uint amount_ ) external view returns ( uint _value );
 }
 
-contract TimeTreasury is Ownable {
+contract NayaTreasury is Ownable {
 
     using LowGasSafeMath for uint;
     using LowGasSafeMath for uint32;
@@ -269,7 +269,7 @@ contract TimeTreasury is Ownable {
         SOHM 
     }
 
-    ITIMEERC20 public immutable Time;
+    INAYAERC20 public immutable Naya;
     uint32 public immutable secondsNeededForQueue;
 
     address[] public reserveTokens; // Push only, beware false-positives.
@@ -316,20 +316,20 @@ contract TimeTreasury is Ownable {
 
     uint256 public limitAmount;
 
-    IERC20 public MEMOries;
+    IERC20 public sNaya;
     uint public sOHMQueue; // Delays change to sOHM address
     
     uint public totalReserves; // Risk-free value of all assets
     uint public totalDebt;
 
     constructor (
-        address _Time,
+        address _Naya,
         address _MIM,
         uint32 _secondsNeededForQueue,
         uint256 _limitAmount
     ) {
-        require( _Time != address(0) );
-        Time = ITIMEERC20(_Time);
+        require( _Naya != address(0) );
+        Naya = INAYAERC20(_Naya);
 
         isReserveToken[ _MIM ] = true;
         reserveTokens.push( _MIM );
@@ -347,7 +347,7 @@ contract TimeTreasury is Ownable {
     }
 
     /**
-        @notice allow approved address to deposit an asset for Time
+        @notice allow approved address to deposit an asset for Naya
         @param _amount uint
         @param _token address
         @param _profit uint
@@ -364,10 +364,10 @@ contract TimeTreasury is Ownable {
         }
 
         uint value = valueOf(_token, _amount);
-        // mint Time needed and store amount of rewards for distribution
+        // mint Naya needed and store amount of rewards for distribution
         send_ = value.sub( _profit );
         limitRequirements(msg.sender, send_);
-        Time.mint( msg.sender, send_ );
+        Naya.mint( msg.sender, send_ );
 
         totalReserves = totalReserves.add( value );
         emit ReservesUpdated( totalReserves );
@@ -376,7 +376,7 @@ contract TimeTreasury is Ownable {
     }
 
     /**
-        @notice allow approved address to burn Time for reserves
+        @notice allow approved address to burn Naya for reserves
         @param _amount uint
         @param _token address
      */
@@ -385,7 +385,7 @@ contract TimeTreasury is Ownable {
         require( isReserveSpender[ msg.sender ], "Not approved" );
 
         uint value = valueOf( _token, _amount );
-        Time.burnFrom( msg.sender, value );
+        Naya.burnFrom( msg.sender, value );
 
         totalReserves = totalReserves.sub( value );
         emit ReservesUpdated( totalReserves );
@@ -406,7 +406,7 @@ contract TimeTreasury is Ownable {
 
         uint value = valueOf( _token, _amount );
 
-        uint maximumDebt = MEMOries.balanceOf( msg.sender ); // Can only borrow against sOHM held
+        uint maximumDebt = sNaya.balanceOf( msg.sender ); // Can only borrow against sOHM held
         uint balance = debtorBalance[ msg.sender ];
         uint availableDebt = maximumDebt.sub( balance );
         require( value <= availableDebt, "Exceeds debt limit" );
@@ -444,19 +444,19 @@ contract TimeTreasury is Ownable {
     }
 
     /**
-        @notice allow approved address to repay borrowed reserves with Time
+        @notice allow approved address to repay borrowed reserves with Naya
         @param _amount uint
      */
-    function repayDebtWithTime( uint _amount ) external {
+    function repayDebtWithNaya( uint _amount ) external {
         require( isDebtor[ msg.sender ], "Not approved as debtor" );
         require( isReserveSpender[ msg.sender ], "Not approved as spender" );
 
-        Time.burnFrom( msg.sender, _amount );
+        Naya.burnFrom( msg.sender, _amount );
 
         debtorBalance[ msg.sender ] = debtorBalance[ msg.sender ].sub( _amount );
         totalDebt = totalDebt.sub( _amount );
 
-        emit RepayDebt( msg.sender, address(Time), _amount, _amount );
+        emit RepayDebt( msg.sender, address(Naya), _amount, _amount );
     }
 
     /**
@@ -490,7 +490,7 @@ contract TimeTreasury is Ownable {
         require( isRewardManager[ msg.sender ], "Not approved" );
         require( _amount <= excessReserves(), "Insufficient reserves" );
         limitRequirements(msg.sender, _amount);
-        Time.mint( _recipient, _amount );
+        Naya.mint( _recipient, _amount );
 
         emit RewardsMinted( msg.sender, _recipient, _amount );
     } 
@@ -500,7 +500,7 @@ contract TimeTreasury is Ownable {
         @return uint
      */
     function excessReserves() public view returns ( uint ) {
-        return totalReserves.sub( Time.totalSupply().sub( totalDebt ) );
+        return totalReserves.sub( Naya.totalSupply().sub( totalDebt ) );
     }
 
     /**
@@ -525,15 +525,15 @@ contract TimeTreasury is Ownable {
     }
 
     /**
-        @notice returns Time valuation of asset
+        @notice returns Naya valuation of asset
         @param _token address
         @param _amount uint
         @return value_ uint
      */
     function valueOf( address _token, uint _amount ) public view returns ( uint value_ ) {
         if ( isReserveToken[ _token ] ) {
-            // convert amount to match Time decimals
-            value_ = _amount.mul( 10 ** Time.decimals() ).div( 10 ** IERC20( _token ).decimals() );
+            // convert amount to match Naya decimals
+            value_ = _amount.mul( 10 ** Naya.decimals() ).div( 10 ** IERC20( _token ).decimals() );
         } else if ( isLiquidityToken[ _token ] ) {
             value_ = IBondCalculator( bondCalculator[ _token ] ).valuation( _token, _amount );
         }
@@ -684,7 +684,7 @@ contract TimeTreasury is Ownable {
 
         } else if ( _managing == MANAGING.SOHM ) { // 9
             sOHMQueue = 0;
-            MEMOries = IERC20(_address);
+            sNaya = IERC20(_address);
             result = true;
 
         } else return false;
